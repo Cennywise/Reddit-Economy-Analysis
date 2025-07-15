@@ -1,8 +1,10 @@
-# Reddit Economy Analysis
-This program scrapes Reddit data and Federal Reserve Economic Data (FRED) and investigates possible correlation.
+# Reddit-News Economy Analysis
+This program investigates correlation among Federal Reserve Economic Data (FRED) and headlines from news sites and Reddit posts. The Federal Reserve Bank of St. Louis, Reddit, and newsapi.org all provide APIs for freely accessing their data. The St. Louis bank API gives employment data across time. The Reddit API provides posts discussing unemployment from the subreddit, r/Economics. News API similarly gathers news headlines about unemployment. Using the VaderSentiment library, a "sentiment" score is given to each Reddit post and news title. This score basically classifies each headline as a positive or negative message.
 
-The [Federal Reserve Bank of St. Louis](https://fred.stlouisfed.org/) and [Reddit](https://www.reddit.com/r/Economics/) both provide APIs for accessing their data. The St. Louis API is used to get employment data across time, and the Reddit API is used to gather posts from r/Economics that include "unemploy" in their title. Using the VaderSentiment library, the program assigns each Reddit post a "sentiment score", classifying the post as positive or negative. It then calculates the average sentiment of each month in the dataset. Then the data from both APIs are merged into a single data frame. To make comparison possible, the employment rate and sentiment scores are converted to Z-scores.
+With this data, two correlations are investigated. One would expect that the sentiment of unemployment posts would rise and fall with the employment rate. However, the graph below shows no visible correlation, and calculating the Pearson correlation score, -0.0467, confirms this.
 
-Finally, the employment rate and Reddit sentiment are graphed together and their correlation is calculated. The surprising result is that there is no correlation. Their Pearson correlation score is -0.0467.
+![Employment](Employment_and_Sentiment.png)
 
-![Graph](Employment_and_Sentiment.png)
+The second correlation is between news headlines and the posts on r/Economics. These would likely be correlated. Unfortunately, there were only three available data points to draw the correlation from, so the result is inconclusive. Nonetheless, the graph is shown below.
+
+![News](Reddit_and_News.png)
